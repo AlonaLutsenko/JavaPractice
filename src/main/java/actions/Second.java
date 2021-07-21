@@ -25,4 +25,16 @@ public class Second {
         Thread.sleep(2000);
         driver.quit();
     }
+    WebElement element1 = driver.findElement(By.id("draggable"));
+    WebElement element2 = driver.findElement(By.id("droppable"));
+
+    Actions actions = new Actions(driver);
+        actions.moveToElement(element1).clickAndHold().moveToElement(element2).release().perform();
+
+} catch (InterruptedException e) {
+        e.printStackTrace();
+        } finally {
+        Thread.sleep(2000);
+        driver.quit();
+        }
 }
