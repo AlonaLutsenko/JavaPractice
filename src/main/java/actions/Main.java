@@ -33,6 +33,23 @@ public class Main {
             Thread.sleep(2000);
             driver.quit();
         }
+        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        try {
+            driver.get("https://crossbrowsertesting.github.io/drag-and-drop.html");
+            Thread.sleep(2000);
+
+            WebElement element1 = driver.findElement(By.id("draggable"));
+            WebElement element2 = driver.findElement(By.id("droppable"));
+
+            Actions actions = new Actions(driver);
+            actions.moveToElement(element1).clickAndHold().moveToElement(element2).release().perform();
+
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } finally {
+            Thread.sleep(2000);
+            driver.quit();
+        }
     }
 }
